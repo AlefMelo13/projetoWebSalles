@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SallesWebMvc.Models;
 using System.Diagnostics;
+using SallesWebMvc.Models.ViewModels;
 
-namespace SallesWebMvc.Controllers
+namespace SallesWebMvc.Models.ViewModels
 {
     public class HomeController : Controller
     {
