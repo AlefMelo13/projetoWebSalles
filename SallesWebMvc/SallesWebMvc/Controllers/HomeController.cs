@@ -20,6 +20,7 @@ namespace SallesWebMvc.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Email"] = "alef@gmail.com";
             return View();
         }
 
