@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SallesWebMvc.Data;
+
 namespace SallesWebMvc
 {
     public class Program
     {
-        public static object WebApplication { get; private set; }
-
         public static void Main(string[] args)
         {
-            builder.Services.AddDbContext<SallesWebMvcContext>(options =>
-                options.UseMySql(builder.Configuration.GetConnectionString("SallesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SallesWebMvcContext' not found.")));
+            var builder = WebApplication.CreateBuilder(args);
+
+            builder.ConfigurarMySql();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -37,6 +37,20 @@ namespace SallesWebMvc
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+        }
+    }
+
+    public static class MinhaClasseDeConfiguracao
+    {
+        public static IServiceCollection ConfigurarMySql(this WebApplicationBuilder builder)
+        {
+            string connectionString = builder.Configuration.GetConnectionString("SallesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SallesWebMvcContext' not found.");
+
+            builder.Services.AddDbContext<SallesWebMvcContext>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+                );
+
+            return builder.Services;
         }
     }
 }
