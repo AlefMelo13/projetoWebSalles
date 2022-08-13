@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SallesWebMvc.Models;
 using System.Diagnostics;
+using SallesWebMvc.Models.ViewModels;
 
-namespace SallesWebMvc.Controllers
+namespace SallesWebMvc.Models.ViewModels
 {
     public class HomeController : Controller
     {
@@ -20,6 +21,7 @@ namespace SallesWebMvc.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Email"] = "alef@gmail.com";
             return View();
         }
 
