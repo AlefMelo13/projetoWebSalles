@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj": {}
+    "D:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj": {}
   },
   "projects": {
-    "H:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj": {
+    "D:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj",
+        "projectUniqueName": "D:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj",
         "projectName": "SallesWebMvc",
-        "projectPath": "H:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj",
-        "packagesPath": "C:\\Users\\TESTE02\\.nuget\\packages\\",
-        "outputPath": "H:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\obj\\",
+        "projectPath": "D:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\SallesWebMvc.csproj",
+        "packagesPath": "C:\\Users\\Álef Melo\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos Visual Studio\\projetoWebSalles\\SallesWebMvc\\SallesWebMvc\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\TESTE02\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Álef Melo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,8 +65,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -82,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
