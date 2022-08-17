@@ -27,7 +27,7 @@ namespace SallesWebMvc
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();
@@ -49,7 +49,7 @@ namespace SallesWebMvc
             builder.Services.AddDbContext<SallesWebMvcContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 );
-
+            builder.Services.AddScoped<SeedingService>();
             return builder.Services;
         }
     }
