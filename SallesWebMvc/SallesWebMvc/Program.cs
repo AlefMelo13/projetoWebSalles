@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SallesWebMvc.Data;
+using SallesWebMvc.Services;
 
 namespace SallesWebMvc
 {
@@ -50,6 +51,7 @@ namespace SallesWebMvc
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 );
             builder.Services.AddScoped<SeedingService>();
+            builder.Services.AddScoped<SellerService>();
             return builder.Services;
         }
     }
