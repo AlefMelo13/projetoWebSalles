@@ -21,7 +21,11 @@ namespace SallesWebMvc.Models.ViewModels
 
         public IActionResult Privacy()
         {
-            ViewData["Email"] = "alef@gmail.com";
+            return View();
+        }
+
+        public IActionResult Depatamento()
+        {
             return View();
         }
 
