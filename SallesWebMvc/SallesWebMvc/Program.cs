@@ -52,6 +52,7 @@ namespace SallesWebMvc
                 );
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<SellerService>();
+            builder.Services.AddScoped<DepartmentService>();
             return builder.Services;
         }
     }
