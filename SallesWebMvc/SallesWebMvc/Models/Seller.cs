@@ -1,11 +1,22 @@
-﻿namespace SallesWebMvc.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SallesWebMvc.Models
 {
     public class Seller
     {
         public int Id { get; set; }
+
+        [Display(Name = "Nome")]
         public string Name { get; set; }
+
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
+
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
+
+        [Display(Name = "Salário Base")]
         public decimal BaseSalary { get; set; }
         public Department? Department { get; set; }
         public int DepartmentId { get; set; }

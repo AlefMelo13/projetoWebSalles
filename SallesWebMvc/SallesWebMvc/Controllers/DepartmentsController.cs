@@ -14,22 +14,22 @@ namespace SallesWebMvc.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
               return _context.Department != null ? 
-                          View(await _context.Department.ToListAsync()) :
+                          View(_context.Department.ToList()) :
                           Problem("Entity set 'SallesWebMvcContext.Department'  is null.");
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null || _context.Department == null)
             {
                 return NotFound();
             }
 
-            var department = await _context.Department
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var department = _context.Department
+                .FirstOrDefault(m => m.Id == id);
             if (department == null)
             {
                 return NotFound();
@@ -45,25 +45,25 @@ namespace SallesWebMvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name")] Department department)
+        public IActionResult Create([Bind("Id,Name")] Department department)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(department);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(department);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null || _context.Department == null)
             {
                 return NotFound();
             }
 
-            var department = await _context.Department.FindAsync(id);
+            var department = _context.Department.Find(id);
             if (department == null)
             {
                 return NotFound();
@@ -73,7 +73,7 @@ namespace SallesWebMvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Department department)
+        public IActionResult Edit(int id, [Bind("Id,Name")] Department department)
         {
             if (id != department.Id)
             {
@@ -85,7 +85,7 @@ namespace SallesWebMvc.Controllers
                 try
                 {
                     _context.Update(department);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -103,15 +103,15 @@ namespace SallesWebMvc.Controllers
             return View(department);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null || _context.Department == null)
             {
                 return NotFound();
             }
 
-            var department = await _context.Department
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var department = _context.Department
+                .FirstOrDefault(m => m.Id == id);
             if (department == null)
             {
                 return NotFound();
@@ -122,19 +122,19 @@ namespace SallesWebMvc.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
             if (_context.Department == null)
             {
                 return Problem("Entity set 'SallesWebMvcContext.Department'  is null.");
             }
-            var department = await _context.Department.FindAsync(id);
-            if (department != null)
+            var department = _context.Department.Find(id);
+            if (department == null)
             {
-                _context.Department.Remove(department);
+                return NotFound();
             }
-            
-            await _context.SaveChangesAsync();
+            _context.Department.Remove(department);
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
