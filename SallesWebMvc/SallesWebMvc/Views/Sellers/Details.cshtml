@@ -1,10 +1,10 @@
 ﻿@model SallesWebMvc.Models.Seller
 
 @{
-    ViewData["Title"] = "Deletar";
+    ViewData["Title"] = "Details";
 }
 
-<h3>Deseja realmente excluir?</h3>
+<h3>Delathes</h3>
 
 <div>
     <hr />
@@ -33,11 +33,15 @@
         <dd>
             @Html.DisplayFor(model => model.BaseSalary)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
     </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id"/>
-        <input type="submit" value="Delete" class="btn btn-danger"/>
-        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
 </div>
