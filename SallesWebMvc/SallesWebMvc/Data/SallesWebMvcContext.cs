@@ -5,8 +5,7 @@ namespace SallesWebMvc.Data
 {
     public class SallesWebMvcContext : DbContext
     {
-        public SallesWebMvcContext (DbContextOptions<SallesWebMvcContext> options)
-            : base(options)
+        public SallesWebMvcContext (DbContextOptions<SallesWebMvcContext> options) : base(options)
         {
         }
 

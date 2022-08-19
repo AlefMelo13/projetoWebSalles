@@ -1,8 +1,12 @@
-﻿namespace SallesWebMvc.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SallesWebMvc.Models
 {
     public class Department
     {
         public int Id { get; set; }
+
+        [Display(Name = "Nome")]
         public string? Name { get; set; }
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
@@ -21,7 +25,7 @@
             Sellers.Add(seller);
         }
 
-        public double TotalSalles(DateTime initial, DateTime final)
+        public decimal TotalSalles(DateTime initial, DateTime final)
         {
             return Sellers.Sum(seller => seller.TotalSalles(initial, final));
         }

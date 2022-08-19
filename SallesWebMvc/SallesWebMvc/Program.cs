@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using SallesWebMvc.Data;
 using SallesWebMvc.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace SallesWebMvc
 {
@@ -17,6 +18,17 @@ namespace SallesWebMvc
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            //Localização padrão da aplicação
+            var ptBr = new CultureInfo("pt-Br");
+            var localizationOpition = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(ptBr),
+                SupportedCultures = new List<CultureInfo> { ptBr },
+                SupportedUICultures = new List<CultureInfo> { ptBr },
+            };
+
+            app.UseRequestLocalization(localizationOpition);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -52,6 +64,7 @@ namespace SallesWebMvc
                 );
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<SellerService>();
+            builder.Services.AddScoped<DepartmentService>();
             return builder.Services;
         }
     }

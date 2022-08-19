@@ -1,7 +1,7 @@
 ﻿@model SallesWebMvc.Models.ViewModels.SellerFormViewModel
 
 @{
-    ViewData["Title"] = "Cadasto de Vendedor";
+    ViewData["Title"] = "Editar";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -9,7 +9,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit" novalidate>
+            <input type="hidden" asp-for="Seller.Id" />
             <div class="form-group">
                 <label asp-for="Seller.Name" class="control-label"></label>
                 <input asp-for="Seller.Name" class="form-control" placeholder="Nome" />
@@ -17,17 +18,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Seller.Email" class="control-label"></label>
-                <input asp-for="Seller.Email" class="form-control" placeholder="mail@mail.com.br" />
+                <input asp-for="Seller.Email" class="form-control" />
                 <span asp-validation-for="Seller.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Seller.BirthDate" class="control-label"></label>
-                <input asp-for="Seller.BirthDate" class="form-control" placeholder="dd/mm/aaaa" />
+                <input asp-for="Seller.BirthDate" class="form-control" />
                 <span asp-validation-for="Seller.BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Seller.BaseSalary" class="control-label"></label>
-                <input asp-for="Seller.BaseSalary" class="form-control" placeholder="1.000,00" />
+                <input asp-for="Seller.BaseSalary" class="form-control" />
                 <span asp-validation-for="Seller.BaseSalary" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,7 +37,7 @@
             </div>
             <hr />
             <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
@@ -48,23 +49,22 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     }*@
-
 <script>
-    (function () {
-        'use strict';
-        window.addEventListener('load', function () {
-            // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
-            var forms = document.getElementsByClassName('needs-validation');
-            // Faz um loop neles e evita o envio
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+    var forms = document.getElementsByClassName('needs-validation');
+    // Faz um loop neles e evita o envio
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 </script>
