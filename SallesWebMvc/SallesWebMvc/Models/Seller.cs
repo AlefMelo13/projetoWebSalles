@@ -8,7 +8,7 @@ namespace SallesWebMvc.Models
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Informe o Nome")]
-        [StringLength(60, MinimumLength = 6, ErrorMessage = "Tamanho deve ser entre {2} e {1}")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "Tamanho deve ser entre {2} e {1}")]
         public string Name { get; set; }
 
         [Display(Name = "E-mail")]
