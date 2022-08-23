@@ -18,13 +18,38 @@ namespace SallesWebMvc.Controllers
 
         public async Task<IActionResult> SimpleSearch(DateTime? dataInicial, DateTime? dataFinal)
         {
+            if (!dataInicial.HasValue)
+            {
+                dataInicial = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+            if (!dataFinal.HasValue)
+            {
+                dataFinal = DateTime.Now;
+            }
+
+            ViewData["dataInicial"] = dataInicial.Value.ToString("yyyy-MM-dd");
+            ViewData["dataFinal"] = dataFinal.Value.ToString("yyyy-MM-dd");
+
             var resultado = await _sallesRecordService.FindByDateAsync(dataInicial, dataFinal);
             return View(resultado);
         }
 
-        public IActionResult GroupingSearch()
+        public async Task<IActionResult> GroupingSearch(DateTime? dataInicial, DateTime? dataFinal)
         {
-            return View();
+            if (!dataInicial.HasValue)
+            {
+                dataInicial = new DateTime(DateTime.Now.Year, 1, 1);
+            }
+            if (!dataFinal.HasValue)
+            {
+                dataFinal = DateTime.Now;
+            }
+
+            ViewData["dataInicial"] = dataInicial.Value.ToString("yyyy-MM-dd");
+            ViewData["dataFinal"] = dataFinal.Value.ToString("yyyy-MM-dd");
+
+            var resultado = await _sallesRecordService.FindByDateGroupingAsync(dataInicial, dataFinal);
+            return View(resultado);
         }
     }
 }

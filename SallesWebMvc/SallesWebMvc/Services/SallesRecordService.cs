@@ -13,19 +13,39 @@ namespace SallesWebMvc.Services
             _context = context;
         }
 
-        public async Task<List<SellesRecord>> FindByDateAsync(DateTime ? dataInicial, DateTime? dataFinal)
+        public async Task<List<SellesRecord>> FindByDateAsync(DateTime? dataInicial, DateTime? dataFinal)
         {
-            var resultado = from obj in _context.SellesRecord select obj;
+            var resultado = from sallerRecord in _context.SellesRecord select sallerRecord;
             if (dataInicial.HasValue)
             {
-                resultado = resultado.Where(x => x.Date >= dataInicial.Value);
+                resultado = resultado.Where(sellerRecord => sellerRecord.Date >= dataInicial.Value);
             }
             if (dataFinal.HasValue)
             {
-                resultado = resultado.Where(x => x.Date <= dataFinal.Value);
+                resultado = resultado.Where(sellerRecord => sellerRecord.Date <= dataFinal.Value);
             }
 
-            return await resultado.Include(x => x.Seller).Include(x => x.Seller.Department).OrderByDescending(x => x.Date).ToListAsync();
+            return await resultado.Include(sellerRecord => sellerRecord.Seller).Include(sellerRecord => sellerRecord.Seller.Department).OrderByDescending(sellerRecord => sellerRecord.Date).ToListAsync();
+        }
+
+        public async Task<List<IGrouping<Department,SellesRecord>>> FindByDateGroupingAsync(DateTime? dataInicial, DateTime? dataFinal)
+        {
+            var resultado = from sallerRecord in _context.SellesRecord select sallerRecord;
+            if (dataInicial.HasValue)
+            {
+                resultado = resultado.Where(sellerRecord => sellerRecord.Date >= dataInicial.Value);
+            }
+            if (dataFinal.HasValue)
+            {
+                resultado = resultado.Where(sellerRecord => sellerRecord.Date <= dataFinal.Value);
+            }
+
+            return await resultado
+                .Include(sellerRecord => sellerRecord.Seller)
+                .Include(sellerRecord => sellerRecord.Seller.Department)
+                .OrderByDescending(sellerRecord => sellerRecord.Date)
+                .GroupBy(sellerRecord => sellerRecord.Seller.Department)
+                .ToListAsync();
         }
     }
 }
