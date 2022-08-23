@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SallesWebMvc.Data;
 using SallesWebMvc.Models;
+using SallesWebMvc.Services.Exceptions;
 
 namespace SallesWebMvc.Services
 {
@@ -25,6 +26,10 @@ namespace SallesWebMvc.Services
 
         public async Task<Produto> FindById(int id)
         {
+            if(id == null)
+            {
+                throw new Exception("Erro");
+            }
             return await _context.Produto.FirstOrDefaultAsync(produto => produto.Id == id);
         }
 
@@ -38,7 +43,7 @@ namespace SallesWebMvc.Services
             }
             catch(DbUpdateException e)
             {
-                throw new Exception(e.Message);
+                throw new IntegrityException(e.Message);
             }
         }
     }

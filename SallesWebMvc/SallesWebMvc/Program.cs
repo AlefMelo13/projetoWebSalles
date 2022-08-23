@@ -66,6 +66,8 @@ namespace SallesWebMvc
             builder.Services.AddScoped<SellerService>();
             builder.Services.AddScoped<DepartmentService>();
             builder.Services.AddScoped<SallesRecordService>();
+            builder.Services.AddScoped<ProdutoService>();
+            builder.Services.AddScoped<MarcaService>();
             return builder.Services;
         }
     }

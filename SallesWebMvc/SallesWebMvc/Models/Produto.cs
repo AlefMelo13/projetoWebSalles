@@ -23,6 +23,10 @@ namespace SallesWebMvc.Models
         [Display(Name = "Preço")]
         public decimal Preco { get; set; }
 
+        public Produto()
+        {
+        }
+
         public Produto(int id, string descricao, Marca marca, string unidade, int codBarras, decimal preco)
         {
             Id = id;
