@@ -18,7 +18,7 @@ namespace SallesWebMvc.Models
         public string Unidade { get; set; }
 
         [Display(Name = "Código de Barra")]
-        public int CodBarras { get; set; }
+        public Int64 CodBarras { get; set; }
 
         [Display(Name = "Preço")]
         public decimal Preco { get; set; }
@@ -27,7 +27,7 @@ namespace SallesWebMvc.Models
         {
         }
 
-        public Produto(int id, string descricao, Marca marca, string unidade, int codBarras, decimal preco)
+        public Produto(int id, string descricao, Marca marca, string unidade, Int64 codBarras, decimal preco)
         {
             Id = id;
             Descricao = descricao;
