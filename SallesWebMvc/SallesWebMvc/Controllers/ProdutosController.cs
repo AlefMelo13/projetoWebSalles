@@ -7,7 +7,7 @@ namespace SallesWebMvc.Controllers
 {
     public class ProdutosController : Controller
     {
-        private readonly ProdutoService _produtoService;
+        private readonly ProdutoService? _produtoService;
         private readonly MarcaService _marcaService;
         public ProdutosController(ProdutoService produtoService, MarcaService marcaService)
         {
@@ -29,7 +29,7 @@ namespace SallesWebMvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Produto produto)
+        public async Task<IActionResult> Create(Produto? produto)
         {
             if (!ModelState.IsValid)
             {

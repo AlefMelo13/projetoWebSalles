@@ -28,7 +28,7 @@ namespace SallesWebMvc.Services
             return await resultado.Include(x => x.Seller).Include(x => x.Seller.Department).OrderBy(x => x.Id).ToListAsync();
         }
 
-        public async Task<List<IGrouping<Department?,SellesRecord>>> FindByDateGroupingAsync(DateTime? dataInicial, DateTime? dataFinal)
+        public async Task<List<IGrouping<Department,SellesRecord>>> FindByDateGroupingAsync(DateTime? dataInicial, DateTime? dataFinal)
         {
             var resultado = from obj in _context.SellesRecord select obj;
             if (dataInicial.HasValue)

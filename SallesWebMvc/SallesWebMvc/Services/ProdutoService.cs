@@ -22,14 +22,11 @@ namespace SallesWebMvc.Services
         public async Task Insert(Produto produto)
         {
             _context.Produto.Add(produto);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Produto> FindById(int id)
         {
-            if(id == null)
-            {
-                throw new Exception("Erro");
-            }
             return await _context.Produto.FirstOrDefaultAsync(produto => produto.Id == id);
         }
 
