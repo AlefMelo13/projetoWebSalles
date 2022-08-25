@@ -38,7 +38,7 @@ namespace SallesWebMvc.Services
                 _context.Produto.Remove(produto);
                 await _context.SaveChangesAsync();
             }
-            catch(DbUpdateException e)
+            catch (DbUpdateException e)
             {
                 throw new IntegrityException(e.Message);
             }
