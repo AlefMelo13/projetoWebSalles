@@ -18,34 +18,29 @@ namespace SallesWebMvc.Services
             var resultado = from sallerRecord in _context.SellesRecord select sallerRecord;
             if (dataInicial.HasValue)
             {
-                resultado = resultado.Where(sellerRecord => sellerRecord.Date >= dataInicial.Value);
+                resultado = resultado.Where(x => x.Date >= dataInicial.Value);
             }
             if (dataFinal.HasValue)
             {
-                resultado = resultado.Where(sellerRecord => sellerRecord.Date <= dataFinal.Value);
+                resultado = resultado.Where(x => x.Date <= dataFinal.Value);
             }
 
-            return await resultado.Include(sellerRecord => sellerRecord.Seller).Include(sellerRecord => sellerRecord.Seller.Department).OrderByDescending(sellerRecord => sellerRecord.Date).ToListAsync();
+            return await resultado.Include(x => x.Seller).Include(x => x.Seller.Department).OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task<List<IGrouping<Department,SellesRecord>>> FindByDateGroupingAsync(DateTime? dataInicial, DateTime? dataFinal)
         {
-            var resultado = from sallerRecord in _context.SellesRecord select sallerRecord;
+            var resultado = from obj in _context.SellesRecord select obj;
             if (dataInicial.HasValue)
             {
-                resultado = resultado.Where(sellerRecord => sellerRecord.Date >= dataInicial.Value);
+                resultado = resultado.Where(x => x.Date >= dataInicial.Value);
             }
             if (dataFinal.HasValue)
             {
-                resultado = resultado.Where(sellerRecord => sellerRecord.Date <= dataFinal.Value);
+                resultado = resultado.Where(x => x.Date <= dataFinal.Value);
             }
 
-            return await resultado
-                .Include(sellerRecord => sellerRecord.Seller)
-                .Include(sellerRecord => sellerRecord.Seller.Department)
-                .OrderByDescending(sellerRecord => sellerRecord.Date)
-                .GroupBy(sellerRecord => sellerRecord.Seller.Department)
-                .ToListAsync();
+            return await resultado.Include(x => x.Seller).Include(x => x.Seller.Department).OrderByDescending(x => x.Date).GroupBy(x => x.Seller.Department).ToListAsync();
         }
     }
 }

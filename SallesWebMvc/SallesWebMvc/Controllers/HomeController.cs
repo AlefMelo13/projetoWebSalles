@@ -27,6 +27,11 @@ namespace SallesWebMvc.Models.ViewModels
             return View();
         }
 
+        public IActionResult Search()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

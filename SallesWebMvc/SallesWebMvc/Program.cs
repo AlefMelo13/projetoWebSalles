@@ -19,6 +19,13 @@ namespace SallesWebMvc
 
             var app = builder.Build();
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                SeedingService.Seed(services);
+            }
+
             //Localização padrão da aplicação
             var ptBr = new CultureInfo("pt-Br");
             var localizationOpition = new RequestLocalizationOptions
@@ -62,10 +69,11 @@ namespace SallesWebMvc
             builder.Services.AddDbContext<SallesWebMvcContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 );
-            builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<SellerService>();
             builder.Services.AddScoped<DepartmentService>();
             builder.Services.AddScoped<SallesRecordService>();
+            builder.Services.AddScoped<ProdutoService>();
+            builder.Services.AddScoped<MarcaService>();
             return builder.Services;
         }
     }
