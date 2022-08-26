@@ -1,19 +1,19 @@
 ﻿@model SallesWebMvc.Models.ViewModels.ProdutoFormViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Editar Cadastro de Produto";
 }
 
-<h1>Cadastro de Produto</h1>
+<h1>@ViewData["Title"]</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Edit" novalidate>
+            <input type="hidden" asp-for="Produto.Id" />
             <div class="form-group">
                 <label asp-for="Produto.Descricao" class="control-label"></label>
-                <input asp-for="Produto.Descricao" class="form-control" />
+                <input asp-for="Produto.Descricao" class="form-control" placeholder="Descrição" />
                 <span asp-validation-for="Produto.Descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,17 +35,31 @@
                 <input asp-for="Produto.Preco" class="form-control" />
                 <span asp-validation-for="Produto.Preco" class="text-danger"></span>
             </div>
-            <hr/>
+            <hr />
             <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    }
+<script>
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+            var forms = document.getElementsByClassName('needs-validation');
+            // Faz um loop neles e evita o envio
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

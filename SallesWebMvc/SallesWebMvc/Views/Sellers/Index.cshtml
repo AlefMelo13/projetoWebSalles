@@ -10,7 +10,7 @@
     <a asp-action="Create" class="btn btn-success">Adicionar</a>
 </p>
 
-<table class="table table-striped table-hover">
+<table width="100%" class="table table-striped table-hover">
     <thead>
         <tr class = "btn-info">
             <th>
@@ -45,9 +45,9 @@
                     @Html.DisplayFor(modelItem => item.BaseSalary)
                 </td>
                 <td>
-                    <a asp-action = "Edit" asp-route-id = "@item.Id">Editar</a>
-                    <a asp-action = "Details" asp-route-id = "@item.Id">Detalhes</a>
-                    <a asp-action = "Delete" asp-route-id = "@item.Id">Excluir</a>
+                    <a asp-action="Edit" class="btn btn-outline-info" style="margin:auto" asp-route-id = " @item.Id">Editar</a>
+                    <a asp-action="Details" class="btn btn-outline-warning" style="margin:auto" asp-route-id = " @item.Id">Detalhes</a>
+                    <a asp-action="Delete" class="btn btn-outline-danger" style="margin:auto" asp-route-id = " @item.Id">Excluir</a>
                 </td>
             </tr>
         }

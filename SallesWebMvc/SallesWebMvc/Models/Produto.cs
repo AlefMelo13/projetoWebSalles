@@ -10,10 +10,12 @@ namespace SallesWebMvc.Models
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "Informe a Descrição")]
         public string Descricao { get; set; }
-
+        
+        public Marca? Marca { get; set; }
+        
         [Display(Name = "Marca")]
         [Required(ErrorMessage = "Informe a Marca")]
-        public Marca Marca { get; set; }
+        public int MarcaId { get; set; }
 
         [Display(Name = "Unidade")]
         [Required(ErrorMessage = "Informe a Unidade")]
@@ -25,13 +27,13 @@ namespace SallesWebMvc.Models
 
         [Display(Name = "Preço")]
         [Required(ErrorMessage = "Informe o Preço")]
-        public decimal Preco { get; set; }
+        public double Preco { get; set; }
 
         public Produto()
         {
         }
 
-        public Produto(int id, string descricao, Marca marca, string unidade, Int64 codBarras, decimal preco)
+        public Produto(int id, string descricao, Marca marca, string unidade, Int64 codBarras, double preco)
         {
             Id = id;
             Descricao = descricao;

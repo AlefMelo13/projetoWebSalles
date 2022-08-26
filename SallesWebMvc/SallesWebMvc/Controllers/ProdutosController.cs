@@ -27,19 +27,6 @@ namespace SallesWebMvc.Controllers
             return View(list);
         }
 
-        //public async Task<IActionResult> SearchByDescricao(string descricao)
-        //{
-
-        //    if (string.IsNullOrEmpty(descricao))
-        //    {
-        //        return View("Error");
-        //    }
-
-        //    var list = await _produtoService.fi
-
-        //    return View(list);
-        //}
-
         public async Task<IActionResult> Create()
         {
             var marcas = await _marcaService.FindAllAsync();
@@ -49,7 +36,7 @@ namespace SallesWebMvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Produto? produto)
+        public async Task<IActionResult> Create(Produto produto)
         {
             if (!ModelState.IsValid)
             {

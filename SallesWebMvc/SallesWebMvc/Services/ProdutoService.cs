@@ -21,13 +21,13 @@ namespace SallesWebMvc.Services
 
         public async Task Insert(Produto produto)
         {
-            _context.Produto.Add(produto);
+            _context.Add(produto);
             await _context.SaveChangesAsync();
         }
 
         public async Task<Produto> FindById(int id)
         {
-            return await _context.Produto.FirstOrDefaultAsync(produto => produto.Id == id);
+            return await _context.Produto.Include(produto => produto.Marca).FirstOrDefaultAsync(produto => produto.Id == id);
         }
 
         public async Task Remove(int id)
