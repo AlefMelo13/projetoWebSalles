@@ -7,7 +7,7 @@ namespace SallesWebMvc.Controllers
 {
     public class ProdutosController : Controller
     {
-        private readonly ProdutoService? _produtoService;
+        private readonly ProdutoService _produtoService;
         private readonly MarcaService _marcaService;
         public ProdutosController(ProdutoService produtoService, MarcaService marcaService)
         {
@@ -15,10 +15,30 @@ namespace SallesWebMvc.Controllers
             _marcaService = marcaService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var list = await _produtoService.FindAllAsync();
+            return View(list);
         }
+
+        public async Task<IActionResult> SearchById(int id)
+        {
+            var list = await _produtoService.FindById(id);
+            return View(list);
+        }
+
+        //public async Task<IActionResult> SearchByDescricao(string descricao)
+        //{
+
+        //    if (string.IsNullOrEmpty(descricao))
+        //    {
+        //        return View("Error");
+        //    }
+
+        //    var list = await _produtoService.fi
+
+        //    return View(list);
+        //}
 
         public async Task<IActionResult> Create()
         {
