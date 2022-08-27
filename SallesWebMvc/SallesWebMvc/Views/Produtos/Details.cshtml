@@ -1,0 +1,53 @@
+﻿@model SallesWebMvc.Models.Produto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3>Delathes</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Marca.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Unidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Unidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodBarras)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CodBarras)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>

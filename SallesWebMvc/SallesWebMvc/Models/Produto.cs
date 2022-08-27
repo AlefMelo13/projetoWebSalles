@@ -21,7 +21,7 @@ namespace SallesWebMvc.Models
         [Required(ErrorMessage = "Informe a Unidade")]
         public string Unidade { get; set; }
 
-        [Display(Name = "Código de Barra")]
+        [Display(Name = "Código de Barras")]
         [Required(ErrorMessage = "Informe o Código de Barras")]
         public Int64 CodBarras { get; set; }
 
